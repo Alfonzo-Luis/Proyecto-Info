@@ -1,3 +1,10 @@
+body{ 
+    background-color: rgba(0, 0, 255, 0.94);
+}
 .contenedor{
-    background-color: lightpink;
+    background-color: #b6ffe7;
+}
+.enlace{
+    color: #ffd6b6;
+    font-size: 24px;
 }
