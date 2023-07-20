@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+    <h2>Mi noticia detallada</h2>
+    {% if user.is_authenticated and noticia.author == user %}
+        <a href="{% url 'noticias:edit_noticia' pk=noticia.pk %}">Editar</a>
+
+        <form method="POST" action="{% url 'noticias:detalle' pk=noticia.pk %}">
+            {% csrf_token %}
+            <button type="submit" name="delete_noticia">BORRAR</button>
+        </form>
+    {% endif %}
+    <img src="{{ noticia.imagen.url }}" width="50%">
+    <p>TITULO: {{ noticia.titulo }}</p>
+    <p>FECHA: {{ noticia.fecha_de_publicacion }}</p>
+    <p>AUTOR: {{ noticia.author }}</p>
+    <p>CATEGORIA: {{ noticia.categoria_noticia }}</p>
+    <p>CUERPO: {{ noticia.contenido }}</p>
+    <br>
+
+    <h3>Comentarios</h3>
+    {% for comment in comments %}
+        <p>{{ comment.author }} - {{ comment.created_at }}</p>
+        <p>{{ comment.text }}</p>
+        <form method="POST" action="{% url 'noticias:delete_comment' comment.id %}">
+            {% csrf_token %}
+            {% if comment.author == user.username %}
+                <button type="submit">Borrar comentario</button>
+                <a href="{% url 'noticias:edit_comment' comment_id=comment.id %}">Editar comentario</a>
+            {% endif %}
+        </form>
+        <hr>
+    {% empty %}
+        <p>No hay comentarios.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+        <h3>Añadir Comentario</h3>
+        <form method="POST" action="{% url 'noticias:add_comment' noticia.pk %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enviar</button>
+        </form>
+    {% else %}
+        <p>Debe iniciar sesión para añadir un comentario</p>
+        <a href="{% url 'login' %}">LOGIN</a>
+    {% endif %}
+
+    <br><br>
+    <a href="{% url 'noticias:listar' %}">VOLVER</a>
+{% endblock contenido %}
+
+
