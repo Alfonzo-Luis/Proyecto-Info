@@ -4,14 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href ="{% static 'css/main.css' %}">
-    <title>Mi blog</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Mi blog | {% block titulo %}{% endblock titulo %}</title>
 </head>
-<body>
-    <div class="contenedor">
-        <h1>hola mundo</h1>
+<body class="contenedor">
+    <div>
+        <a href="{% url 'home' %}">HOME</a>
+        &nbsp;
+        &nbsp;
+        <a href="{% url 'nosotros' %}">IR A COCINA</a>
+        &nbsp;
+        &nbsp;
     </div>
 
-    <a href="{% url 'nosotros' %}" class="enlace">IR A NOSOTROS</a>
+    {% block contenido %}
+        &nbsp;
+        &nbsp;
+        BIENVENIDO A LA COCINA
+        &nbsp;
+        &nbsp;
+    {% endblock contenido %}
 </body>
 </html>
