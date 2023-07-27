@@ -1,28 +1,15 @@
+{% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <title>Mi blog | {% block titulo %}{% endblock titulo %}</title>
+    <link rel="stylesheet" type="text/css" href ="{% static 'css/main.css' %}">
+    <title>Mi blog</title>
 </head>
-<body class="contenedor">
-    <div>
-        <a href="{% url 'home' %}">HOME</a>
-        &nbsp;
-        &nbsp;
-        <a href="{% url 'nosotros' %}">IR A COCINA</a>
-        &nbsp;
-        &nbsp;
-    </div>
-
-    {% block contenido %}
-        &nbsp;
-        &nbsp;
-        BIENVENIDO A LA COCINA
-        &nbsp;
-        &nbsp;
-    {% endblock contenido %}
+<body>
+    Hola mundo
+    <a href="{% url 'nosotros' %}">IR A NOSOTROS</a>
 </body>
 </html>

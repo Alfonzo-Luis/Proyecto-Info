@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}NOTICIAS{% endblock titulo %}
+
+{% block contenido %}
+    <h2>Crea una noticia</h2>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <p>
+            <label for="{{ form.titulo.id_for_label }}">Titulo:</label>
+            {{ form.titulo }}
+        </p>
+        
+        <p>
+            <label for="{{ form.resumen.id_for_label }}">Resumen:</label>
+            {{ form.resumen }}
+        </p>
+        
+        <p>
+            <label for="{{ form.contenido.id_for_label }}">Contenido:</label>
+            {{ form.contenido }}
+        </p>
+        
+        <p>
+            <label for="{{ form.imagen.id_for_label }}">Imagen:</label>
+            {{ form.imagen }}
+        </p>
+        
+        <p>
+            <label for="{{ form.categoria_noticia.id_for_label }}">Categoria noticia:</label>
+            <select name="{{ form.categoria_noticia.name }}" required id="{{ form.categoria_noticia.id_for_label }}">
+                {% for choice in form.categoria_noticia.field.choices %}
+                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </p>
+        
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock contenido %}
