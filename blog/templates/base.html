@@ -3,30 +3,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href ="{% static 'css/main.css' %}">
-    
-    <title>Mi blog |{% block titulo %}{% endblock titulo %}</title>
+    <title>Mi blog</title>
 </head>
-<body class="contenedor">
-    <div>
-        <img src="{% static 'img/logo.jpg' %}" width="10%">
-        <a href="{% url 'home' %}">IR A HOME</a>
-        <a href="{% url 'nosotros' %}">IR A NOSOTROS</a>
-        <a href="{% url 'noticias:listar' %}">IR A NOTICIAS</a>
-       
-        {% if user.is_authenticated %}
-            <strong>Hola {{ user.username }}</strong>
-            <a href="{% url 'logout' %}">LOGOUT</a>
-        {% else %}
-            <a href="{% url 'login' %}">LOGIN</a>
-	<a href="{% url 'registro' %}">REGISTRO</a>
-        {% endif %}
+<body>
+    </div>
+    <a href="{% url 'home' %}" class="enlace">informacion de COMIDA</a>
+    <a href="{% url 'nosotros' %}" class="enlace">informacion de COMIDA</a>
     </div>
     {% block contenido %}
-
-    {% endblock contenido %}
+    {% enblock contenido %}
 </body>
 </html>
