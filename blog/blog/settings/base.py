@@ -104,9 +104,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (os.path.join(os.path.dirname(BASE_DIR),'static'),)
-
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL ='media/'
 
 MEDIA_ROOT = (os.path.join(os.path.dirname(BASE_DIR),'media'),)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['lu1salf0nz0.mysql.pythonanywhere-services.com']
