@@ -26,9 +26,8 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
-# registro de usuarios
+    # Vista para el registro de usuarios    
 class Registro(CreateView):
-    # formulario de django
     form_class = RegistroForm
     success_url = reverse_lazy('login')
     template_name = 'usuarios/registro.html'
